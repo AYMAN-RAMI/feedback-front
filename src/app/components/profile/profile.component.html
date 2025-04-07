@@ -1,0 +1,26 @@
+<div class="profile-container">
+  <div class="profile-card">
+    <h1>Profil Utilisateur</h1>
+    
+    <div class="profile-info">
+      <div class="info-group">
+        <label>Nom:</label>
+        <p>{{ userInfo?.nom || 'Non disponible' }}</p>
+      </div>
+      
+      <div class="info-group">
+        <label>Email:</label>
+        <p>{{ userInfo?.email || 'Non disponible' }}</p>
+      </div>
+      
+      <div class="info-group">
+        <label>Rôle:</label>
+        <p>{{ userInfo?.role || 'Non disponible' }}</p>
+      </div>
+    </div>
+    
+    <div class="actions">
+      <button (click)="logout()" class="logout-btn">Se déconnecter</button>
+    </div>
+  </div>
+</div>

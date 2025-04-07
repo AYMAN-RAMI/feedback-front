@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <span>Analyse Feedback</span>
+  <span class="spacer"></span>
+  <button mat-button routerLink="/home" routerLinkActive="active">Accueil</button>
+  <button mat-button routerLink="/utilisateurs" routerLinkActive="active">Utilisateurs</button>
+  <button mat-button routerLink="/feedbacks" routerLinkActive="active">Feedbacks</button>
+  <button mat-button routerLink="/analyses" routerLinkActive="active">Analyses IA</button>
+  <button mat-button routerLink="/tickets" routerLinkActive="active">Tickets</button>
+  <button mat-button routerLink="/backlogs" routerLinkActive="active">Backlogs</button>
+  <button mat-button routerLink="/sprints" routerLinkActive="active">Sprints</button>
+  <span class="spacer"></span>
+  <button mat-button routerLink="/profile" routerLinkActive="active">Profil</button>
+  <button mat-button (click)="logout()">Déconnexion</button>
+</mat-toolbar>

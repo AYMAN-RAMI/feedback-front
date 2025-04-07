@@ -1,0 +1,49 @@
+<div class="container">
+    <h2>Liste des backlogs</h2>
+    
+    <div class="actions">
+      <button mat-raised-button color="primary" routerLink="/backlogs/new">
+        <mat-icon>add</mat-icon> Nouveau backlog
+      </button>
+    </div>
+  
+    <div *ngIf="backlogs.length === 0" class="no-data">
+      Aucun backlog trouvé.
+    </div>
+  
+    <table mat-table [dataSource]="backlogs" class="mat-elevation-z8" *ngIf="backlogs.length > 0">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let backlog">{{backlog.id}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="statut">
+        <th mat-header-cell *matHeaderCellDef>Statut</th>
+        <td mat-cell *matCellDef="let backlog">{{backlog.statut}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="ticketsCount">
+        <th mat-header-cell *matHeaderCellDef>Nombre de tickets</th>
+        <td mat-cell *matCellDef="let backlog">{{backlog.ticketIds?.length || 0}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let backlog">
+          <button mat-icon-button color="primary" [routerLink]="['/backlogs', backlog.id]">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button mat-icon-button color="accent" [routerLink]="['/backlogs', backlog.id, 'edit']">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteBacklog(backlog.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  

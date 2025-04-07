@@ -1,0 +1,55 @@
+<div class="container">
+    <h2>Liste des analyses IA</h2>
+  
+    <div *ngIf="analyses.length === 0" class="no-data">
+      Aucune analyse IA trouvée.
+    </div>
+  
+    <table mat-table [dataSource]="analyses" class="mat-elevation-z8" *ngIf="analyses.length > 0">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let analyse">{{analyse.id}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="feedbackId">
+        <th mat-header-cell *matHeaderCellDef>Feedback ID</th>
+        <td mat-cell *matCellDef="let analyse">{{analyse.feedbackId}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="sentiment">
+        <th mat-header-cell *matHeaderCellDef>Sentiment</th>
+        <td mat-cell *matCellDef="let analyse">{{analyse.sentiment}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="score">
+        <th mat-header-cell *matHeaderCellDef>Score</th>
+        <td mat-cell *matCellDef="let analyse">{{analyse.score}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="resume">
+        <th mat-header-cell *matHeaderCellDef>Résumé</th>
+        <td mat-cell *matCellDef="let analyse">{{analyse.resume}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="dateAnalyse">
+        <th mat-header-cell *matHeaderCellDef>Date d'analyse</th>
+        <td mat-cell *matCellDef="let analyse">{{analyse.dateAnalyse | date:'dd/MM/yyyy'}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let analyse">
+          <button mat-icon-button color="primary" [routerLink]="['/analyses', analyse.id]">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteAnalyse(analyse.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  
